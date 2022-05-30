@@ -13,6 +13,9 @@ class Pokemon {
      required this.spawnChance,
      required this.avgSpawns,
      required this.spawnTime,
+     this.multipliers,
+     this.weaknesses,
+     this.nextEvolution,
   });
 
   int id;
@@ -28,6 +31,9 @@ class Pokemon {
   double spawnChance;
   double avgSpawns;
   String spawnTime;
+  List<double>? multipliers;
+  List<String>? weaknesses;
+  List<NextEvolution>? nextEvolution;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
     id: json["id"],
@@ -38,11 +44,14 @@ class Pokemon {
     height: json["height"],
     weight: json["weight"],
     candy: json["candy"],
-    candyCount: (json["candy_count"] != null) ? double.parse(json["candy_count"].toString()) : null,
+    candyCount: (json["candy_count"] ?? 0.0).toDouble(),
     egg: json["egg"],
     spawnChance: json["spawn_chance"].toDouble(),
-    avgSpawns: double.parse(json["avg_spawns"].toString()),
+    avgSpawns: json["avg_spawns"].toDouble(),
     spawnTime: json["spawn_time"],
+    multipliers: List<double>.from((json["multipliers"] ?? []).map((x) => x.toDouble())),
+    weaknesses: List<String>.from((json["weaknesses"] ?? []).map((x) => x)),
+    nextEvolution: List<NextEvolution>.from((json["next_evolution"] ?? []).map((x) => NextEvolution.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -59,5 +68,28 @@ class Pokemon {
     "spawn_chance": spawnChance,
     "avg_spawns": avgSpawns,
     "spawn_time": spawnTime,
+    "multipliers": List<dynamic>.from((multipliers ?? []).map((x) => x)),
+    "weaknesses": List<dynamic>.from((weaknesses ?? []).map((x) => x)),
+    "next_evolution": List<dynamic>.from((nextEvolution ?? []).map((x) => x.toJson())),
+  };
+}
+
+class NextEvolution {
+  NextEvolution({
+    this.num,
+    this.name,
+  });
+
+  String? num;
+  String? name;
+
+  factory NextEvolution.fromJson(Map<String, dynamic> json) => NextEvolution(
+    num: json["num"],
+    name: json["name"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "num": num,
+    "name": name,
   };
 }

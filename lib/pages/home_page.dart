@@ -49,7 +49,9 @@ class _HomePageState extends State<HomePage> {
             12,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 10.0,),
               Text(
                 "Pokedex",
                 style: TextStyle(
@@ -57,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 30.0,),
               GridView.count(
                 physics: const ScrollPhysics(),
                 shrinkWrap: true, //Para que se ajuste al SingleScrollView

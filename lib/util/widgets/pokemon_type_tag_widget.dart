@@ -10,8 +10,10 @@ class PokemonTypeTagWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: 5.0, horizontal: 10.0),
-      margin: EdgeInsets.symmetric(
-        vertical: 5.0,
+      margin: EdgeInsets.only(
+        top: 1.0,
+        bottom: 5.0,
+        right: 5.0,
       ),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.3),
