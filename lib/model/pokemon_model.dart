@@ -15,6 +15,7 @@ class Pokemon {
      required this.spawnTime,
      this.multipliers,
      this.weaknesses,
+     this.prevEvolution,
      this.nextEvolution,
   });
 
@@ -33,6 +34,7 @@ class Pokemon {
   String spawnTime;
   List<double>? multipliers;
   List<String>? weaknesses;
+  List<PrevEvolution>? prevEvolution;
   List<NextEvolution>? nextEvolution;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
@@ -51,6 +53,7 @@ class Pokemon {
     spawnTime: json["spawn_time"],
     multipliers: List<double>.from((json["multipliers"] ?? []).map((x) => x.toDouble())),
     weaknesses: List<String>.from((json["weaknesses"] ?? []).map((x) => x)),
+    prevEvolution: List<PrevEvolution>.from((json["prev_evolution"] ?? []).map((x) => PrevEvolution.fromJson(x))),
     nextEvolution: List<NextEvolution>.from((json["next_evolution"] ?? []).map((x) => NextEvolution.fromJson(x))),
   );
 
@@ -70,7 +73,28 @@ class Pokemon {
     "spawn_time": spawnTime,
     "multipliers": List<dynamic>.from((multipliers ?? []).map((x) => x)),
     "weaknesses": List<dynamic>.from((weaknesses ?? []).map((x) => x)),
+    "prev_evolution": List<dynamic>.from((prevEvolution ?? []).map((x) => x.toJson())),
     "next_evolution": List<dynamic>.from((nextEvolution ?? []).map((x) => x.toJson())),
+  };
+}
+
+class PrevEvolution {
+  PrevEvolution({
+    this.num,
+    this.name,
+  });
+
+  String? num;
+  String? name;
+
+  factory PrevEvolution.fromJson(Map<String, dynamic> json) => PrevEvolution(
+    num: json["num"],
+    name: json["name"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "num": num,
+    "name": name,
   };
 }
 

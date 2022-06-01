@@ -191,6 +191,94 @@ class PokemonDetailPage extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 4.0,
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(vertical: 15.0,),
+                                    child: Text(
+                                      "Pre - Evolution: ",
+                                    ),
+                                  ),
+                                  // Expanded(
+                                  //   child: SingleChildScrollView(
+                                  //     scrollDirection: Axis.horizontal,
+                                  //     physics: BouncingScrollPhysics(),
+                                  //     child: Row(
+                                  //       verticalDirection: VerticalDirection.down,
+                                  //       children: (pokemon.weaknesses ?? [])
+                                  //           .map<Widget>((e) =>
+                                  //           ItemDataPokemonTags(
+                                  //             tags: e,
+                                  //           ))
+                                  //           .toList(),
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  Expanded(
+                                    child: Wrap(
+                                      spacing: 0.0, // gap between adjacent chips
+                                      alignment: WrapAlignment.start,
+                                      runSpacing: 0.0,
+                                      children: (pokemon.prevEvolution ?? [])
+                                          .map<Widget>((e) => ItemDataPokemonTags(
+                                        tags: e.name ?? "",
+                                      ))
+                                          .toList(),
+                                    ),
+                                  ),
+                                  //Chip se usa para filtros y listados
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 4.0,
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(vertical: 15.0,),
+                                    child: Text(
+                                      "Netx - Evolution: ",
+                                    ),
+                                  ),
+                                  // Expanded(
+                                  //   child: SingleChildScrollView(
+                                  //     scrollDirection: Axis.horizontal,
+                                  //     physics: BouncingScrollPhysics(),
+                                  //     child: Row(
+                                  //       verticalDirection: VerticalDirection.down,
+                                  //       children: (pokemon.weaknesses ?? [])
+                                  //           .map<Widget>((e) =>
+                                  //           ItemDataPokemonTags(
+                                  //             tags: e,
+                                  //           ))
+                                  //           .toList(),
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  Expanded(
+                                    child: Wrap(
+                                      spacing: 0.0, // gap between adjacent chips
+                                      alignment: WrapAlignment.start,
+                                      runSpacing: 0.0,
+                                      children: (pokemon.nextEvolution ?? [])
+                                          .map<Widget>((e) => ItemDataPokemonTags(
+                                        tags: e.name ?? "",
+                                      ))
+                                          .toList(),
+                                    ),
+                                  ),
+                                  //Chip se usa para filtros y listados
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),

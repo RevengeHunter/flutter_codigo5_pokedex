@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_codigo5_pokedex">
 
-    <uses-permission android:name="android.permision.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="flutter_codigo5_pokedex"
+        android:label="Pokedex App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
