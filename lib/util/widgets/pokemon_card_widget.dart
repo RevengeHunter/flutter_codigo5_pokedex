@@ -15,13 +15,18 @@ class PokemonCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>PokemonDetailPage(pokemon: pokemon,)));
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PokemonDetailPage(
+                      pokemon: pokemon,
+                    )));
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
-          color: colorPokemon[pokemon.type[0]],//obtenerColor(pokemon.type[0]),
+          color: colorPokemon[pokemon.type[0]], //obtenerColor(pokemon.type[0]),
         ),
         child: Stack(
           children: [
@@ -38,7 +43,34 @@ class PokemonCardWidget extends StatelessWidget {
               bottom: -5,
               right: -8,
               child: Image.network(
-                pokemon.img, //"http://www.serebii.net/pokemongo/pokemon/001.png",
+                pokemon
+                    .img, //"http://www.serebii.net/pokemongo/pokemon/001.png",
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 100,
+                    width: 100,
+                    //color: Colors.amber,
+                    alignment: Alignment.center,
+                    child: Stack(
+                      children: [
+                        Image.asset('assets/images/dito.png',
+                            fit: BoxFit.cover),
+
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Upps",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
             Padding(

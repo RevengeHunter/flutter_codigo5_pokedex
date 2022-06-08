@@ -290,6 +290,33 @@ class PokemonDetailPage extends StatelessWidget {
                           child: Image.network(
                             pokemon.img,
                             fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                height: 140,
+                                width: 120,
+                                //color: Colors.amber,
+                                alignment: Alignment.center,
+                                child: Stack(
+                                  children: [
+                                    Image.asset('assets/images/dito.png',
+                                        fit: BoxFit.cover),
+
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 12.0,),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Pokemon Image Not Found",
+                                        style: TextStyle(
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
